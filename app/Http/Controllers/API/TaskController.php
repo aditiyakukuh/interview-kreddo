@@ -143,7 +143,7 @@ class TaskController extends Controller
             $task->delete();
             Log::info('Task deleted', ['task_id' => $task->id, 'user_id' => $request->user()->id]);
             return response()->json([
-                'message' => 'delete data successfully'
+                'message' => 'deleted data successfully'
             ], 200);
         } catch (\Exception $e) {
             Log::error('Error deleting data', ['error' => $e->getMessage()]);
