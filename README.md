@@ -4,7 +4,7 @@
 
 ## Dont forget to import kreddo_postman_collection.json to your postman. to access the API.
 
-1. first, u mush clone the project.
+1. first, you mush clone the project.
 2. Once the cloning process is complete, navigate to the project directory using the following command:
    `cd interview-kreddo`
 3. Before running the project, make sure you have PHP 8.2 to install Laravel 10 on your system.
