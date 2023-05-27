@@ -1,5 +1,29 @@
 # interview-kreddo
 
+## How to run this project
+
+## Dont forget to import postman collection json to your postman. to access the API.
+
+1. first, u mush clone the project.
+2. Once the cloning process is complete, navigate to the project directory using the following command:
+   `cd interview-kreddo`
+3. Before running the project, make sure you have PHP 8.2 to install Laravel 10 on your system.
+4. Install the project dependencies by running the following command:
+   `composer install`
+5. Create a copy of the .env.example file and rename it to .env:
+   `cp .env.example .env`
+6. Generate an application key by running the following command:
+   `php artisan key:generate`
+7. Configure the database connection in the .env file with your database credentials.
+8. Run the database migration to create the necessary tables:
+   `php artisan migrate`
+   or u can import the database.sql to your database.
+9. Start the development server by running the following command:
+   `php artisan serve`
+   or you can type the specific port with
+   `php artisan serve --port=8080`
+10. The project should now be up and running. You can access the api from your postman.
+
 ## Description of this project
 
 This project is created with Laravel framework (PHP). The structure of the `tasks` table is as follows:
@@ -152,7 +176,7 @@ This project is created with Laravel framework (PHP). The structure of the `task
     -   expired_at: Task expiration date
     -   user: Task owner information
 
-## Delete Task
+### Delete Task
 
 -   URL: `/api/task/{id}`
 -   Method: `DELETE`
