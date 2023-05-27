@@ -96,7 +96,7 @@ class TaskController extends Controller
             Log::info("User ".$request->user()->id." accessed task = ".$task->id);
             return (new TaskResource($task));
         } catch (\Exception $e) {
-            Log::error('Error creating data', ['error' => $e->getMessage()]);
+            Log::error('Error retrieving data', ['error' => $e->getMessage()]);
             return response()->json([
                 $e->getMessage()
             ], 400);

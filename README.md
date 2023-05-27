@@ -2,7 +2,7 @@
 
 ## How to run this project
 
-## Dont forget to import postman collection json to your postman. to access the API.
+## Dont forget to import kreddo_postman_collection.json to your postman. to access the API.
 
 1. first, u mush clone the project.
 2. Once the cloning process is complete, navigate to the project directory using the following command:
@@ -23,6 +23,10 @@
    or you can type the specific port with
    `php artisan serve --port=8080`
 10. The project should now be up and running. You can access the api from your postman.
+
+### LOG file
+
+for the log file, you can access in storage/logs/laravel.log
 
 ## Description of this project
 

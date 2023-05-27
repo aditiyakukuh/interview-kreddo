@@ -26,11 +26,12 @@ class AuthController extends Controller
             ]);
 
             $token = $user->createToken('auth_token')->plainTextToken;
-
+            Log::info('User registered successfully', ['user_id' => $user->id]);
             return (new UserResource($user))->additional([
                 'token' => $token
             ]);
         } catch (\Exception $e) {
+            Log::error('Error registering user', ['error' => $e->getMessage()]);
             return response()->json([
                $e->getMessage()
             ], 401);
@@ -43,6 +44,10 @@ class AuthController extends Controller
             $credential = $request->validated();
             if (auth()->attempt($credential)) {
                 $user = auth()->user();
+                Log::info('Login successful', [
+                    'user_id' => auth()->user()->id,
+                    'email' => auth()->user()->email,
+                ]);
                 return (new UserResource($user))->additional([
                     'token' => $user->createToken('auth_token')->plainTextToken
                 ]);
@@ -51,9 +56,11 @@ class AuthController extends Controller
                 'message' => 'credential is not match'
             ], 401);
         } catch (\Exception $e) {
-            $error = Log::error($e->getMessage(), [
+            
+            $error = Log::error('Error during login', [
+                'error' => $e->getMessage(),
                 'line' => __LINE__,
-                'file' => __File__
+                'file' => __FILE__,
             ]);
             return response()->json($error, 401);
         }
@@ -63,8 +70,10 @@ class AuthController extends Controller
     {
         try {
             $user = Auth::guard('sanctum')->user();
+            Log::info('Profile accessed for user: '.$user->id);
             return new UserResource($user);
         } catch (AuthorizationException $e) {
+            Log::error('Authorization failed while accessing profile');
             return response()->json(['message' => 'Unauthorized'], 401);
         }
     }
